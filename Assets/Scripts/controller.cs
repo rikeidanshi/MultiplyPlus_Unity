@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class controller : MonoBehaviour
 {
@@ -12,10 +13,7 @@ public class controller : MonoBehaviour
     }
     private tarn _currentTarn = tarn.Red;
 
-    public int CurrentTarn
-    {
-        get { return (int)_currentTarn; }
-    }
+    public int CurrentTarn{ get { return (int)_currentTarn; } }
     
     private enum CellState
     {
@@ -34,6 +32,12 @@ public class controller : MonoBehaviour
     {
         return (int)_gameBoard[row, col];
     }
+
+    private static int _redScore;
+    public static int RedScore { get { return _redScore; } }
+
+    private static int _blueScore;
+    public static int BlueScore { get { return _blueScore; } }
 
     public void Pushed(int row, int col)
     {
@@ -221,13 +225,13 @@ public class controller : MonoBehaviour
     {
         CellState targetValueA = CellState.nRed;
         CellState targetValueB = CellState.Red;
-        int RedCount = _gameBoard.Cast<CellState>().Where(x => x == targetValueA || x == targetValueB).Count();
+        _redScore = _gameBoard.Cast<CellState>().Where(x => x == targetValueA || x == targetValueB).Count();
         targetValueA = CellState.nBlue;
         targetValueB = CellState.Blue;
-        int BlueCount = _gameBoard.Cast<CellState>().Where(x => x == targetValueA || x == targetValueB).Count();
-        if (RedCount + BlueCount == 25)
+        _blueScore = _gameBoard.Cast<CellState>().Where(x => x == targetValueA || x == targetValueB).Count();
+        if (_redScore + _blueScore == 25)
         {
-
+            SceneManager.LoadScene("ResultScene");
         }
 
 
@@ -237,6 +241,9 @@ public class controller : MonoBehaviour
     {
         _redButtonManager = GameObject.Find("RedButtonManager").GetComponent<RedButtonManager>();
         _blueButtonManager = GameObject.Find("BlueButtonManager").GetComponent<BlueButtonManager>();
+        _redScore = 0;
+        _blueScore= 0;
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
