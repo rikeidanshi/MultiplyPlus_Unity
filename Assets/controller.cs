@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class controller : MonoBehaviour
@@ -9,7 +10,12 @@ public class controller : MonoBehaviour
         Red,
         Blue
     }
-    private tarn Tarn = tarn.Red;
+    private tarn _currentTarn = tarn.Red;
+
+    public int CurrentTarn
+    {
+        get { return (int)_currentTarn; }
+    }
     
     private enum CellState
     {
@@ -31,7 +37,7 @@ public class controller : MonoBehaviour
 
     public void Pushed(int row, int col)
     {
-        if (Tarn == tarn.Red)
+        if (_currentTarn == tarn.Red)
         {
             if (_gameBoard[row, col] == CellState.Empty)
             { 
@@ -116,7 +122,8 @@ public class controller : MonoBehaviour
                         }
                     }
                 }
-                Tarn = tarn.Blue;
+                TarnEnd();
+                _currentTarn = tarn.Blue;
             }
         }
         else
@@ -204,9 +211,26 @@ public class controller : MonoBehaviour
                         }
                     }
                 }
-                Tarn = tarn.Red;
+                TarnEnd();
+                _currentTarn = tarn.Red;
             }
         }
+    }
+
+    private void TarnEnd()
+    {
+        CellState targetValueA = CellState.nRed;
+        CellState targetValueB = CellState.Red;
+        int RedCount = _gameBoard.Cast<CellState>().Where(x => x == targetValueA || x == targetValueB).Count();
+        targetValueA = CellState.nBlue;
+        targetValueB = CellState.Blue;
+        int BlueCount = _gameBoard.Cast<CellState>().Where(x => x == targetValueA || x == targetValueB).Count();
+        if (RedCount + BlueCount == 25)
+        {
+
+        }
+
+
     }
     // Start is called before the first frame update
     void Start()

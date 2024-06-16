@@ -23,6 +23,7 @@ public class GameBoardGenerator : MonoBehaviour
                 float y = row * 1.0f + offset.y;
                 float z = 0.0f;
                 instance.transform.position = new Vector3(x, y, z);
+                instance.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             }
         }
     }
