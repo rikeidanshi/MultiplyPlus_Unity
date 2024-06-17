@@ -6,13 +6,13 @@ using TMPro;
 
 public class ScoreTextManager : MonoBehaviour
 {
-    public TextMeshProUGUI RedScoreText;
-    public TextMeshProUGUI BlueScoreText;
-    public TextMeshProUGUI RedResultText;
-    public TextMeshProUGUI BlueResultText;
+    [SerializeField] private TextMeshProUGUI RedScoreText;
+    [SerializeField] private TextMeshProUGUI BlueScoreText;
+    [SerializeField] private TextMeshProUGUI RedResultText;
+    [SerializeField] private TextMeshProUGUI BlueResultText;
 
-    private int _redScore = controller.RedScore;
-    private int _blueScore = controller.BlueScore;
+    private int _redScore = Controller.RedScore;
+    private int _blueScore = Controller.BlueScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +28,7 @@ public class ScoreTextManager : MonoBehaviour
             RedResultText.text = "You Lose...";
             BlueResultText.text = "You Win!";
         }
+        Destroy(gameObject);
     }
 
     // Update is called once per frame

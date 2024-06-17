@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameBoardGenerator : MonoBehaviour
 {
-    public GameObject prefab;
-    public int rows = 5;
-    public int cols = 5;
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private int rows = 5;
+    [SerializeField] private int cols = 5;
 
    // Start is called before the first frame update
     private void Start()

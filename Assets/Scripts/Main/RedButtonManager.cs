@@ -5,7 +5,7 @@ using TMPro;
 
 public class RedButtonManager : MonoBehaviour
 {
-    public TextMeshProUGUI StateText;
+    [SerializeField] private TextMeshProUGUI StateText;
     private int State = 0;
 
     public void PushButton()

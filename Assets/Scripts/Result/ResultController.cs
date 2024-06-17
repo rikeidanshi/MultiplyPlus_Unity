@@ -11,7 +11,7 @@ public class ResultController : MonoBehaviour
 
     private void GoOpening()
     {
-        SceneManager.LoadScene("OpeningScene");
+        SceneManager.LoadScene("TitleScene");
     }
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,7 @@ public class ResultController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _startTime = Time.time;
+            //Debug.Log("pushed");
         }
 
         if (Input.GetMouseButton(0))

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class color : MonoBehaviour
 {
-    private controller _controller;
+    private Controller _controller;
     private int row;
     private int col;
     [SerializeField] Material[] materialArray = new Material[6];
@@ -15,7 +15,7 @@ public class color : MonoBehaviour
     {
         row = Mathf.FloorToInt(transform.position.y) * -1 + 2 ;
         col = Mathf.FloorToInt(transform.position.x) + 2 ;
-        _controller = GameObject.Find("GameManager").GetComponent<controller>();
+        _controller = GameObject.Find("GameManager").GetComponent<Controller>();
         GetComponent<SpriteRenderer>().material = materialArray[0];
     }
 

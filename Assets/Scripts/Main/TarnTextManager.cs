@@ -5,15 +5,15 @@ using TMPro;
 
 public class TarnTextManager : MonoBehaviour
 {
-    private controller _controller;
-    public TextMeshProUGUI RedStateText;
-    public TextMeshProUGUI BlueStateText;
+    private Controller _controller;
+    [SerializeField] private TextMeshProUGUI RedStateText;
+    [SerializeField] private TextMeshProUGUI BlueStateText;
     private int Tarn;
 
     // Start is called before the first frame update
     void Start()
     {
-        _controller = GameObject.Find("GameManager").GetComponent<controller>();
+        _controller = GameObject.Find("GameManager").GetComponent<Controller>();
         Tarn = _controller.CurrentTarn;
     }
 

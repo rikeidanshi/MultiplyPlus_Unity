@@ -5,7 +5,7 @@ using TMPro;
 
 public class BlueButtonManager : MonoBehaviour
 {
-    public TextMeshProUGUI StateText;
+    [SerializeField] private TextMeshProUGUI StateText;
     private int State = 1;
 
     public void PushButton()

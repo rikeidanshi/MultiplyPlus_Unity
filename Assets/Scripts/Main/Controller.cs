@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class controller : MonoBehaviour
+public class Controller : MonoBehaviour
 {
     private enum tarn
     {
