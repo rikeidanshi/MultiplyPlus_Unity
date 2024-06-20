@@ -13,7 +13,7 @@ public class Controller : MonoBehaviour
     }
     private tarn _currentTarn = tarn.Red;
 
-    public int CurrentTarn{ get { return (int)_currentTarn; } }
+    public int CurrentTarn { get { return (int)_currentTarn; } }
     
     private enum CellState
     {
@@ -33,6 +33,8 @@ public class Controller : MonoBehaviour
         return (int)_gameBoard[row, col];
     }
 
+    private bool isDifficultActive;
+
     private static int _redScore;
     public static int RedScore { get { return _redScore; } }
 
@@ -43,7 +45,7 @@ public class Controller : MonoBehaviour
     {
         if (_currentTarn == tarn.Red)
         {
-            if (_gameBoard[row, col] == CellState.Empty)
+            if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Red))
             { 
                 _gameBoard[row, col] = CellState.nRed;
 
@@ -132,7 +134,7 @@ public class Controller : MonoBehaviour
         }
         else
         {
-            if (_gameBoard[row, col] == CellState.Empty)
+            if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Blue))
             {
                 _gameBoard[row, col] = CellState.nBlue;
 
@@ -239,11 +241,23 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
+
         _redButtonManager = GameObject.Find("RedButtonManager").GetComponent<RedButtonManager>();
         _blueButtonManager = GameObject.Find("BlueButtonManager").GetComponent<BlueButtonManager>();
         _redScore = 0;
         _blueScore= 0;
-        DontDestroyOnLoad(this);
+
+        int firstAttack = TitleButtonManager.FirstAttack;
+        if (firstAttack == 0) { _currentTarn = tarn.Red; }
+        else if (firstAttack == 2) { _currentTarn = tarn.Blue; }
+        else
+        {
+            _currentTarn = (tarn)(Random.Range(0, 2));
+        }
+        isDifficultActive = TitleButtonManager.IsDifficultActive;
+
+        Destroy(GameObject.Find("ButtonManager"));
     }
 
     // Update is called once per frame

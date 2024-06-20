@@ -11,11 +11,14 @@ public class ScoreTextManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI RedResultText;
     [SerializeField] private TextMeshProUGUI BlueResultText;
 
-    private int _redScore = Controller.RedScore;
-    private int _blueScore = Controller.BlueScore;
+    private int _redScore;
+    private int _blueScore;
     // Start is called before the first frame update
     void Start()
     {
+        _redScore = Controller.RedScore;
+        _blueScore = Controller.BlueScore;
+
         RedScoreText.text = _redScore.ToString();
         BlueScoreText.text = _blueScore.ToString();
         if (_redScore > _blueScore)
@@ -28,7 +31,7 @@ public class ScoreTextManager : MonoBehaviour
             RedResultText.text = "You Lose...";
             BlueResultText.text = "You Win!";
         }
-        Destroy(gameObject);
+        Destroy(GameObject.Find("GameManager"));
     }
 
     // Update is called once per frame
