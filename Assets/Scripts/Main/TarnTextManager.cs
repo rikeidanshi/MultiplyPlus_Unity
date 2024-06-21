@@ -26,7 +26,7 @@ public class TarnTextManager : MonoBehaviour
             RedStateText.text = "Your Tarn";
             BlueStateText.text = "Opponent's Tarn";
         }
-        else
+        else if (Tarn == 1)
         {
             RedStateText.text = "Opponent's Tarn";
             BlueStateText.text = "Your Tarn";

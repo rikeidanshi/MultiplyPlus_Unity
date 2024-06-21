@@ -9,7 +9,8 @@ public class Controller : MonoBehaviour
     private enum tarn
     {
         Red,
-        Blue
+        Blue,
+        Waiting
     }
     private tarn _currentTarn = tarn.Red;
 
@@ -43,97 +44,138 @@ public class Controller : MonoBehaviour
 
     public void Pushed(int row, int col)
     {
+        StartCoroutine(CellChange(row, col));
+    }
+
+    private IEnumerator CellChange(int row, int col)
+    {
         if (_currentTarn == tarn.Red)
         {
+            _currentTarn = tarn.Waiting;
             if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Red))
-            { 
+            {
                 _gameBoard[row, col] = CellState.nRed;
 
                 int Direction = _redButtonManager.GetValue();
-                if (Direction == 0 )
+                if (Direction == 0)
                 {
-                    for (int i = row + 1; i <= 4; i++)
+                    bool[] bools = new bool[4];
+                    for (int i = 1; i <= 4; i++)
                     {
-                        if (_gameBoard[i, col] != CellState.nRed)
+                        if (row + i <= 4)
                         {
-                            _gameBoard[i, col] = CellState.Red;
+                            if (_gameBoard[row + i, col] != CellState.nRed)
+                            {
+                                _gameBoard[row + i, col] = CellState.Red;
+                            }
                         }
-                    }
-                    for (int i = row - 1; i >= 0; i--)
-                    {
-                        if (_gameBoard[i, col] != CellState.nRed)
+                        else
                         {
-                            _gameBoard[i, col] = CellState.Red;
+                            bools[0] = true;
                         }
-                    }
-                    for (int i = col + 1; i <= 4; i++)
-                    {
-                        if (_gameBoard[row, i] != CellState.nRed)
+                        if (row - i >= 0)
                         {
-                            _gameBoard[row, i] = CellState.Red;
+                            if (_gameBoard[row - i, col] != CellState.nRed)
+                            {
+                                _gameBoard[row - i, col] = CellState.Red;
+                            }
                         }
-                    }
-                    for (int i = col - 1; i >= 0; i--)
-                    {
-                        if (_gameBoard[row, i] != CellState.nRed)
+                        else
                         {
-                            _gameBoard[row, i] = CellState.Red;
+                            bools[1] = true;
                         }
+                        if (col + i <= 4)
+                        {
+                            if (_gameBoard[row, col + i] != CellState.nRed)
+                            {
+                                _gameBoard[row, col + i] = CellState.Red;
+                            }
+                        }
+                        else
+                        {
+                            bools[2] = true;
+                        }
+                        if (col - i >= 0)
+                        {
+                            if (_gameBoard[row, col - i] != CellState.nRed)
+                            {
+                                _gameBoard[row, col - i] = CellState.Red;
+                            }
+                        }
+                        else
+                        {
+                            bools[3] = true;
+                        }
+                        if (bools.All(b => b))
+                        {
+                            break;
+                        }
+                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 else
                 {
-                    int i = row;
-                    int j = col;
-                    while (i < 4 && j < 4)
+                    bool[] bools = new bool[4];
+                    for (int i = 1; i <= 4; i++)
                     {
-                        i++;
-                        j++;
-                        if (_gameBoard[i, j] != CellState.nRed)
+                        if (row + i <= 4 && col + i <= 4)
                         {
-                            _gameBoard[i, j] = CellState.Red;
+                            if (_gameBoard[row+i, col+i] != CellState.nRed)
+                            {
+                                _gameBoard[row+i, col+i] = CellState.Red;
+                            }
                         }
-                    }
-                    i = row;
-                    j = col;
-                    while (i < 4 && j > 0)
-                    {
-                        i++;
-                        j--;
-                        if (_gameBoard[i, j] != CellState.nRed)
+                        else
                         {
-                            _gameBoard[i, j] = CellState.Red;
+                            bools[0] = true;
                         }
-                    }
-                    i = row;
-                    j = col;
-                    while (i > 0 && j < 4)
-                    {
-                        i--;
-                        j++;
-                        if (_gameBoard[i, j] != CellState.nRed)
+                        if (row - i >= 0 && col + i <= 4)
                         {
-                            _gameBoard[i, j] = CellState.Red;
+                            if (_gameBoard[row-i, col+i] != CellState.nRed)
+                            {
+                                _gameBoard[row-i, col+i] = CellState.Red;
+                            }
                         }
-                    }
-                    i = row;
-                    j = col;
-                    while (i > 0 && j > 0)
-                    {
-                        i--;
-                        j--;
-                        if (_gameBoard[i, j] != CellState.nRed)
+                        else
                         {
-                            _gameBoard[i, j] = CellState.Red;
+                            bools[1] = true;
                         }
+                        if (row + i <= 4 && col - i >= 0)
+                        {
+                            if (_gameBoard[row+i, col-i] != CellState.nRed)
+                            {
+                                _gameBoard[row+i, col-i] = CellState.Red;
+                            }
+                        }
+                        else
+                        {
+                            bools[2] = true;
+                        }
+                        if (row - i >= 0 && col - i >= 0)
+                        {
+                            if (_gameBoard[row - i, col - i] != CellState.nRed)
+                            {
+                                _gameBoard[row - i, col - i] = CellState.Red;
+                            }
+                        }
+                        else
+                        {
+                            bools[3] = true;
+                        }
+                        if (bools.All(b => b))
+                        {
+                            break;
+                        }
+                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 TarnEnd();
                 _currentTarn = tarn.Blue;
             }
         }
-        else
+        else if (_currentTarn == tarn.Blue)
         {
+            _currentTarn = tarn.Waiting;
             if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Blue))
             {
                 _gameBoard[row, col] = CellState.nBlue;
@@ -141,86 +183,121 @@ public class Controller : MonoBehaviour
                 int Direction = _blueButtonManager.GetValue();
                 if (Direction == 0)
                 {
-                    for (int i = row + 1; i <= 4; i++)
+                    bool[] bools = new bool[4];
+                    for (int i = 1; i <= 4; i++)
                     {
-                        if (_gameBoard[i, col] != CellState.nBlue)
+                        if (row + i <= 4)
                         {
-                            _gameBoard[i, col] = CellState.Blue;
+                            if (_gameBoard[row + i, col] != CellState.nBlue)
+                            {
+                                _gameBoard[row + i, col] = CellState.Blue;
+                            }
                         }
-                    }
-                    for (int i = row - 1; i >= 0; i--)
-                    {
-                        if (_gameBoard[i, col] != CellState.nBlue)
+                        else
                         {
-                            _gameBoard[i, col] = CellState.Blue;
+                            bools[0] = true;
                         }
-                    }
-                    for (int i = col + 1; i <= 4; i++)
-                    {
-                        if (_gameBoard[row, i] != CellState.nBlue)
+                        if (row - i >= 0)
                         {
-                            _gameBoard[row, i] = CellState.Blue;
+                            if (_gameBoard[row - i, col] != CellState.nBlue)
+                            {
+                                _gameBoard[row - i, col] = CellState.Blue;
+                            }
                         }
-                    }
-                    for (int i = col - 1; i >= 0; i--)
-                    {
-                        if (_gameBoard[row, i] != CellState.nBlue)
+                        else
                         {
-                            _gameBoard[row, i] = CellState.Blue;
+                            bools[1] = true;
                         }
+                        if (col + i <= 4)
+                        {
+                            if (_gameBoard[row, col + i] != CellState.nBlue)
+                            {
+                                _gameBoard[row, col + i] = CellState.Blue;
+                            }
+                        }
+                        else
+                        {
+                            bools[2] = true;
+                        }
+                        if (col - i >= 0)
+                        {
+                            if (_gameBoard[row, col - i] != CellState.nBlue)
+                            {
+                                _gameBoard[row, col - i] = CellState.Blue;
+                            }
+                        }
+                        else
+                        {
+                            bools[3] = true;
+                        }
+                        if (bools.All(b => b))
+                        {
+                            break;
+                        }
+                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 else
                 {
-                    int i = row;
-                    int j = col;
-                    while (i < 4 && j < 4)
+                    bool[] bools = new bool[4];
+                    for (int i = 1; i <= 4; i++)
                     {
-                        i++;
-                        j++;
-                        if (_gameBoard[i, j] != CellState.nBlue)
+                        if (row + i <= 4 && col + i <= 4)
                         {
-                            _gameBoard[i, j] = CellState.Blue;
+                            if (_gameBoard[row + i, col + i] != CellState.nBlue)
+                            {
+                                _gameBoard[row + i, col + i] = CellState.Blue;
+                            }
                         }
-                    }
-                    i = row;
-                    j = col;
-                    while (i < 4 && j > 0)
-                    {
-                        i++;
-                        j--;
-                        if (_gameBoard[i, j] != CellState.nBlue)
+                        else
                         {
-                            _gameBoard[i, j] = CellState.Blue;
+                            bools[0] = true;
                         }
-                    }
-                    i = row;
-                    j = col;
-                    while (i > 0 && j < 4)
-                    {
-                        i--;
-                        j++;
-                        if (_gameBoard[i, j] != CellState.nBlue)
+                        if (row - i >= 0 && col + i <= 4)
                         {
-                            _gameBoard[i, j] = CellState.Blue;
+                            if (_gameBoard[row - i, col + i] != CellState.nBlue)
+                            {
+                                _gameBoard[row - i, col + i] = CellState.Blue;
+                            }
                         }
-                    }
-                    i = row;
-                    j = col;
-                    while (i > 0 && j > 0)
-                    {
-                        i--;
-                        j--;
-                        if (_gameBoard[i, j] != CellState.nBlue)
+                        else
                         {
-                            _gameBoard[i, j] = CellState.Blue;
+                            bools[1] = true;
                         }
+                        if (row + i <= 4 && col - i >= 0)
+                        {
+                            if (_gameBoard[row + i, col - i] != CellState.nBlue)
+                            {
+                                _gameBoard[row + i, col - i] = CellState.Blue;
+                            }
+                        }
+                        else
+                        {
+                            bools[2] = true;
+                        }
+                        if (row - i >= 0 && col - i >= 0)
+                        {
+                            if (_gameBoard[row - i, col - i] != CellState.nBlue)
+                            {
+                                _gameBoard[row - i, col - i] = CellState.Blue;
+                            }
+                        }
+                        else
+                        {
+                            bools[3] = true;
+                        }
+                        if (bools.All(b => b))
+                        {
+                            break;
+                        }
+                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 TarnEnd();
                 _currentTarn = tarn.Red;
             }
         }
+        yield return null;
     }
 
     private void TarnEnd()
