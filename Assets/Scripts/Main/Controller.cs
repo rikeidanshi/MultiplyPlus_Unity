@@ -54,9 +54,9 @@ public class Controller : MonoBehaviour
     {
         if (_currentTarn == tarn.Red)
         {
-            _currentTarn = tarn.Waiting;
             if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Red))
             {
+                _currentTarn = tarn.Waiting;
                 _gameBoard[row, col] = CellState.nRed;
 
                 int Direction = _redButtonManager.GetValue();
@@ -178,9 +178,9 @@ public class Controller : MonoBehaviour
         }
         else if (_currentTarn == tarn.Blue)
         {
-            _currentTarn = tarn.Waiting;
             if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Blue))
             {
+                _currentTarn = tarn.Waiting;
                 _gameBoard[row, col] = CellState.nBlue;
 
                 int Direction = _blueButtonManager.GetValue();
@@ -300,7 +300,7 @@ public class Controller : MonoBehaviour
                 _currentTarn = tarn.Red;
             }
         }
-        yield return null;
+        yield break;
     }
 
     private void TarnEnd()
