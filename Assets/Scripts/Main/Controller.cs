@@ -44,7 +44,10 @@ public class Controller : MonoBehaviour
 
     public void Pushed(int row, int col)
     {
-        StartCoroutine(CellChange(row, col));
+        if (_currentTarn != tarn.Waiting)
+        {
+            StartCoroutine(CellChange(row, col));
+        }
     }
 
     private IEnumerator CellChange(int row, int col)
