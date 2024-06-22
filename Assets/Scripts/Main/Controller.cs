@@ -65,6 +65,7 @@ public class Controller : MonoBehaviour
                     bool[] bools = new bool[4];
                     for (int i = 1; i <= 4; i++)
                     {
+                        yield return new WaitForSeconds(0.1f);
                         if (row + i <= 4)
                         {
                             if (_gameBoard[row + i, col] != CellState.nRed)
@@ -113,7 +114,6 @@ public class Controller : MonoBehaviour
                         {
                             break;
                         }
-                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 else
@@ -121,6 +121,7 @@ public class Controller : MonoBehaviour
                     bool[] bools = new bool[4];
                     for (int i = 1; i <= 4; i++)
                     {
+                        yield return new WaitForSeconds(0.1f);
                         if (row + i <= 4 && col + i <= 4)
                         {
                             if (_gameBoard[row+i, col+i] != CellState.nRed)
@@ -169,7 +170,6 @@ public class Controller : MonoBehaviour
                         {
                             break;
                         }
-                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 TarnEnd();
@@ -189,6 +189,7 @@ public class Controller : MonoBehaviour
                     bool[] bools = new bool[4];
                     for (int i = 1; i <= 4; i++)
                     {
+                        yield return new WaitForSeconds(0.1f);
                         if (row + i <= 4)
                         {
                             if (_gameBoard[row + i, col] != CellState.nBlue)
@@ -237,7 +238,6 @@ public class Controller : MonoBehaviour
                         {
                             break;
                         }
-                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 else
@@ -245,6 +245,7 @@ public class Controller : MonoBehaviour
                     bool[] bools = new bool[4];
                     for (int i = 1; i <= 4; i++)
                     {
+                        yield return new WaitForSeconds(0.1f);
                         if (row + i <= 4 && col + i <= 4)
                         {
                             if (_gameBoard[row + i, col + i] != CellState.nBlue)
@@ -293,7 +294,6 @@ public class Controller : MonoBehaviour
                         {
                             break;
                         }
-                        yield return new WaitForSeconds(0.1f);
                     }
                 }
                 TarnEnd();
