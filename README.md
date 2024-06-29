@@ -7,9 +7,13 @@ This is a progect of a board game.
 ![CsharpBadge](https://img.shields.io/badge/C%23-9.0-%23512BD4?logo=csharp)
 ![dotNetBadge](https://img.shields.io/badge/.NET_Mono-6.13.0-%23512BD4?logo=dotnet)
 ## How to install  
-
+1. Open cmd and type this command `git clone https://github.com/rikeidanshi/MultiplyPlus_Unity`
+2. Open Unity Hub and push "Add" in "Projects" tab
+3. Push "Add project from disk"
+4. Select a directory "MultiplyPlus_Unity"
 ## How to use  
-(使い方)
+**Please look for How_to_Play.md for additional information.**    
+Open TitleScene and run.  
 ## Troubleshooting  
 (エラーの対処法)
 ## Licenses  
