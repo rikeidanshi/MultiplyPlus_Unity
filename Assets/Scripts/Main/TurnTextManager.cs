@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TarnTextManager : MonoBehaviour
+public class TurnTextManager : MonoBehaviour
 {
     private Controller _controller;
     [SerializeField] private TextMeshProUGUI RedStateText;
@@ -23,13 +23,13 @@ public class TarnTextManager : MonoBehaviour
         Tarn = _controller.CurrentTarn;
         if (Tarn == 0)
         {
-            RedStateText.text = "Your Tarn";
-            BlueStateText.text = "Opponent's Tarn";
+            RedStateText.text = "Your Turn";
+            BlueStateText.text = "Opponent's Turn";
         }
         else if (Tarn == 1)
         {
-            RedStateText.text = "Opponent's Tarn";
-            BlueStateText.text = "Your Tarn";
+            RedStateText.text = "Opponent's Turn";
+            BlueStateText.text = "Your Turn";
         }
     }
 }

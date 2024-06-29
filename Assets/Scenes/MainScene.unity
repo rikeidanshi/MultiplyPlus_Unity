@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 36115010}
   - component: {fileID: 36115009}
   m_Layer: 0
-  m_Name: TarnTextManager
+  m_Name: TurnTextManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 1132850179}
   - component: {fileID: 1132850178}
   m_Layer: 5
-  m_Name: RedTarnStateText
+  m_Name: RedTurnStateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Opponent's Tarn
+  m_text: Opponent's Turn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 2095503531}
   - component: {fileID: 2095503530}
   m_Layer: 5
-  m_Name: BlueTarnStateText
+  m_Name: BlueTurnStateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your Tarn
+  m_text: Your Turn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
