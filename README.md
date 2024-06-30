@@ -10,13 +10,14 @@ This is a progect of a board game.
 1. Open cmd and type this command `git clone https://github.com/rikeidanshi/MultiplyPlus_Unity`
 2. Open Unity Hub and push "Add" in "Projects" tab
 3. Push "Add project from disk"
-4. Select a directory "MultiplyPlus_Unity"
+4. Select directory "MultiplyPlus_Unity"
 ## How to use  
 **Please look for How_to_Play.md for additional information.**    
-Open TitleScene and run.  
+Open "TitleScene" and run.  
 ## Troubleshooting  
 (エラーの対処法)
 ## Licenses  
-(ライセンス)
+Copyright (c) 2024 rikeidanshi. All rights reserved.  
+Licensed under the [MIT](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/LICENSE) license.  
 ## Contacts  
-(連絡先)
+rikeidanshi@duck.com
