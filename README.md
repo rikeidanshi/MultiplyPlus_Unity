@@ -20,4 +20,4 @@ Open "TitleScene" and run.
 Copyright (c) 2024 rikeidanshi. All rights reserved.  
 Licensed under the [MIT](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/LICENSE) license.  
 ## Contacts  
-rikeidanshi@duck.com
+(e-mail) rikeidanshi@duck.com
