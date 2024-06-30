@@ -1,3 +1,5 @@
+# Important Notice  
+**This is my 1st public repository I made. Please forgive me if there are any shortcomings.**  
 ![icon](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/Pictures/MultiplyPlus_icon.png)
 # ×+  
 ## Abstract  
