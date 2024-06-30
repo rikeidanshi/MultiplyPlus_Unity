@@ -1,4 +1,4 @@
-![icon](https://github.com/rikeidanshi/MultiplyPlus_Unity2/blob/master/Assets/MultiplyPlus_icon.png)
+![icon](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/Pictures/MultiplyPlus_icon.png)
 # ×+  
 ## Abstract  
 This is a progect of a board game.
