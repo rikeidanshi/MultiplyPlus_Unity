@@ -12,7 +12,7 @@ This is a progect of a board game.
 3. Push "Add project from disk"
 4. Select directory "MultiplyPlus_Unity"
 ## How to use  
-**Please look for How_to_Play.md for additional information.**    
+**Please look for [How_to_Play.md](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/How_to_Play.md) for additional information.**    
 Open "TitleScene" and run.  
 ## Troubleshooting  
 (エラーの対処法)
