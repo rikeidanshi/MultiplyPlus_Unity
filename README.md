@@ -14,8 +14,6 @@ This is a progect of a board game.
 ## How to use  
 **Please look for [How_to_Play.md](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/How_to_Play.md) for additional information.**    
 Open "TitleScene" and run.  
-## Troubleshooting  
-(エラーの対処法)
 ## Licenses  
 Copyright (c) 2024 rikeidanshi. All rights reserved.  
 Licensed under the [MIT](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/LICENSE) license.  
