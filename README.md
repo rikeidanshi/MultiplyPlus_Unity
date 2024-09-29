@@ -5,7 +5,7 @@
 ## Abstract  
 This is a progect of a board game.
 ## Environments  
-![UnityBadge](https://img.shields.io/badge/Unity-2022.3.28f1-%23FFFFFF?logo=unity)
+![UnityBadge](https://img.shields.io/badge/Unity-2022.3.48f1-%23FFFFFF?logo=unity)
 ![CsharpBadge](https://img.shields.io/badge/C%23-9.0-%23512BD4?logo=csharp)
 ![dotNetBadge](https://img.shields.io/badge/.NET_Mono-6.13.0-%23512BD4?logo=dotnet)
 ## How to install  
