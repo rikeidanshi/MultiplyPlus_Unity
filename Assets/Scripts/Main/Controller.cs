@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
-    private enum tarn
+    private enum turn
     {
         Red,
         Blue,
         Waiting
     }
-    private tarn _currentTarn = tarn.Red;
+    private turn _currentTurn = turn.Red;
 
-    public int CurrentTarn { get { return (int)_currentTarn; } }
+    public int CurrentTurn { get { return (int)_currentTurn; } }
     
     private enum CellState
     {
@@ -44,7 +44,7 @@ public class Controller : MonoBehaviour
 
     public void Pushed(int row, int col)
     {
-        if (_currentTarn != tarn.Waiting)
+        if (_currentTurn != turn.Waiting)
         {
             StartCoroutine(CellChange(row, col));
         }
@@ -52,11 +52,11 @@ public class Controller : MonoBehaviour
 
     private IEnumerator CellChange(int row, int col)
     {
-        if (_currentTarn == tarn.Red)
+        if (_currentTurn == turn.Red)
         {
             if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Red))
             {
-                _currentTarn = tarn.Waiting;
+                _currentTurn = turn.Waiting;
                 _gameBoard[row, col] = CellState.nRed;
 
                 int Direction = _redButtonManager.GetValue();
@@ -173,14 +173,14 @@ public class Controller : MonoBehaviour
                     }
                 }
                 TarnEnd();
-                _currentTarn = tarn.Blue;
+                _currentTurn = turn.Blue;
             }
         }
-        else if (_currentTarn == tarn.Blue)
+        else if (_currentTurn == turn.Blue)
         {
             if (_gameBoard[row, col] == CellState.Empty ^ (isDifficultActive && _gameBoard[row, col] == CellState.Blue))
             {
-                _currentTarn = tarn.Waiting;
+                _currentTurn = turn.Waiting;
                 _gameBoard[row, col] = CellState.nBlue;
 
                 int Direction = _blueButtonManager.GetValue();
@@ -297,7 +297,7 @@ public class Controller : MonoBehaviour
                     }
                 }
                 TarnEnd();
-                _currentTarn = tarn.Red;
+                _currentTurn = turn.Red;
             }
         }
         yield break;
@@ -329,11 +329,11 @@ public class Controller : MonoBehaviour
         _blueScore= 0;
 
         int firstAttack = TitleButtonManager.FirstAttack;
-        if (firstAttack == 0) { _currentTarn = tarn.Red; }
-        else if (firstAttack == 2) { _currentTarn = tarn.Blue; }
+        if (firstAttack == 0) { _currentTurn = turn.Red; }
+        else if (firstAttack == 2) { _currentTurn = turn.Blue; }
         else
         {
-            _currentTarn = (tarn)(Random.Range(0, 2));
+            _currentTurn = (turn)(Random.Range(0, 2));
         }
         isDifficultActive = TitleButtonManager.IsDifficultActive;
 
