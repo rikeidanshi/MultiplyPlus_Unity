@@ -1,11 +1,9 @@
-# Important Notice  
-**This is my 1st public repository. Please forgive me if there are any shortcomings.**  
 ![icon](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/Pictures/MultiplyPlus_icon.png)
 # ×+  
 ## Abstract  
-This is a progect of a board game.
+This is a project of a board game.
 ## Environments  
-![UnityBadge](https://img.shields.io/badge/Unity-2022.3.48f1-%23FFFFFF?logo=unity)
+![UnityBadge](https://img.shields.io/badge/Unity-2022-%23FFFFFF?logo=unity)
 ![CsharpBadge](https://img.shields.io/badge/C%23-9.0-%23512BD4?logo=csharp)
 ![dotNetBadge](https://img.shields.io/badge/.NET_Mono-6.13.0-%23512BD4?logo=dotnet)
 ## How to install  
