@@ -16,6 +16,6 @@ This is a project of a board game.
 Open "TitleScene" and run.  
 ## Licenses  
 Copyright (c) 2024 rikeidanshi. All rights reserved.  
-Licensed under the [MIT](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/LICENSE) license.  
+Licensed under the [Apache License 2.0](https://github.com/rikeidanshi/MultiplyPlus_Unity/blob/master/LICENSE).  
 ## Contacts  
 (e-mail) rikeidanshi@duck.com
