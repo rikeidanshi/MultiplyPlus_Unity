@@ -26,8 +26,8 @@ public class Controller : MonoBehaviour
     }
     private CellState[,] _gameBoard = new CellState[5, 5];
 
-    private RedButtonManager _redButtonManager;
-    private BlueButtonManager _blueButtonManager;
+    [SerializeField] private RedButtonManager _redButtonManager;
+    [SerializeField] private BlueButtonManager _blueButtonManager;
 
     public int GetValue(int row, int col)
     {
@@ -323,8 +323,8 @@ public class Controller : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
 
-        _redButtonManager = GameObject.Find("RedButtonManager").GetComponent<RedButtonManager>();
-        _blueButtonManager = GameObject.Find("BlueButtonManager").GetComponent<BlueButtonManager>();
+        _redButtonManager = _redButtonManager.GetComponent<RedButtonManager>();
+        _blueButtonManager = _blueButtonManager.GetComponent<BlueButtonManager>();
         _redScore = 0;
         _blueScore= 0;
 
